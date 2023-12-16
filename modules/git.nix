@@ -22,6 +22,9 @@ in {
         lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
         lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
       };
+      difftastic = {
+        enable = true;
+      };
       extraConfig = {
         core = {
           editor = "nvim";

@@ -1,6 +1,11 @@
 { pkgs, unstable, ... }:
 
-{
+let
+  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+    kubectl
+  ]);
+in {
   imports = [
     ./waybar.nix
     ./alacritty.nix
@@ -23,6 +28,7 @@
     unzip
     jq
     file
+    lsof
 
     rustup
     unstable.bun
@@ -32,6 +38,10 @@
     clang-tools
     unstable.go
     unstable.gopls
+
+    gdk
+
+    discord
   ];
 
   programs.home-manager.enable = true;
